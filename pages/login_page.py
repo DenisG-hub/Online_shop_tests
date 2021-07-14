@@ -20,13 +20,9 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.REG_FORM), "Registration form is not presented"
 
     def register_new_user(self, email, password):
-        email_input = self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL)
-        email_input.send_keys(email)
-        password_input = self.browser.find_element(*LoginPageLocators.REGISTER_PASS)
-        password_input.send_keys(password)
-        password_confirm = self.browser.find_element(*LoginPageLocators.REGISTER_CONF_PASS)
-        password_confirm.send_keys(password)
-        btn = self.browser.find_element(*LoginPageLocators.REG_BUTTON)
-        btn.click()
+        self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTER_PASS).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_CONF_PASS).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REG_BUTTON).click()
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
                                                                      " probably unauthorised user"
