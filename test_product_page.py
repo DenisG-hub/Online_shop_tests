@@ -90,7 +90,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.go_to_login_page()
         login_page = LoginPage(browser, browser.current_url)
-        page = login_page.register_new_user()
+        login_page.register_new_user(email, password)
         yield browser
         #
 
