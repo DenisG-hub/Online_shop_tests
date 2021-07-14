@@ -1,4 +1,5 @@
 import pytest
+import faker
 
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
@@ -85,6 +86,9 @@ def test_registration_user(browser):
 class TestUserAddToBasketFromProductPage():
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
+        f = faker.Faker()
+        password = f.password()
+        email = f.email()
         link = "http://selenium1py.pythonanywhere.com/en-gb/"
         page = ProductPage(browser, link)
         page.open()
